@@ -1,6 +1,41 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed as a Demo for React and MongoDB Realm (App-Services).
+
+
+
+# Tutorial Steps:
+
+
+### Create project with React 
+ npx create-react-app APP_NAME
+
+### Open VSC on new project folder
+ cd APP_NAME
+ code .
+
+### Remove unused files and Remove files (Edit: index.js, App.js. Delete: reportWebVitals, setupTests, App.test.js, logo.svg, logo192.png, logo512.png )
+
+### Create a new App Service App and link to the Database Source (Cluster) or create One
+
+### Copy and save App ID 
+
+### Click on Authentication > Authentication Providers, enable "Allow users to log in anonymously", Save Draft.
+
+### Click on Rules and Set up read&write for the target collection (Select collection and click Add preset role)
+
+
+### Click in Functions, 
+ - in Settings Create New Function getAllData  (optionally Log Function Arguments), 
+ - In Function Editor, add code targeting the Source, Database and Collection and Save Draft
+ (i.e.)
+
+### Click on (Realm) SDK to follow instructions and sample code for Language, in this case Js-Web and install in Project:
+ npm install --save realm-web
+
+### Add Code to App.js (or Controller code), we can use the sample functions or our own bussiness logic
+
+
 
 ## Available Scripts
 
@@ -13,6 +48,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+
 
 ### `npm test`
 

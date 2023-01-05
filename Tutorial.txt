@@ -1,0 +1,87 @@
+###### Create simple React-Realm app ###
+
+## React with MongoDB Realm | MongoDB Realm Tutorial [https://www.youtube.com/watch?v=oulJHBQKYuA]  ##
+
+
+
+# Create project with React 
+$ npx create-react-app <APP_NAME>
+
+# Open VSC on new project folder
+$ cd <APP_NAME>
+$ code .
+
+
+# Remove unused files and Remove files (Edit: index.js, App.js. Delete: reportWebVitals, setupTests, App.test.js, logo.svg, logo192.png, logo512.png )
+``
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+    </div>
+  );
+}
+
+export default App;
+``
+
+# Create a new App Service App and link to the Database Source (Cluster) or create One
+ - intercom-0
+
+# Copy and save App ID  (intercom-0-siqce)
+
+# Click on Authentication > Authentication Providers, enable "Allow users to log in anonymously", Save Draft.
+
+# Click on Rules and Set up read&write for the target collection (Select collection and click Add preset role)
+
+
+# Click in Functions, 
+ - in Settings Create New Function getAllData  (optionally Log Function Arguments), 
+ - In Function Editor, add code targeting the Source, Database and Collection and Save Draft
+ (i.e.)
+ ``
+ exports = function(arg){
+  let collection = context.services.get("mongodb-atlas").db("sample_restaurant").collection("restaurant");
+  return collection.find();
+};
+ `` 
+
+# Click on (Realm) SDK to follow instructions and sample code for Language, in this case Js-Web and install in Project:
+ $ npm install --save realm-web
+
+ # Add Code to App.js (or Controller code), we can use the sample functions or our own bussiness logic
+
+ ## in an Async function, replacing <Your App ID> with the App ID stored previously
+ ``	
+ const getData = async() => {
+    const app = new Realm.App({ id: "intercom-0-siqce" });
+    const credentials = Realm.Credentials.anonymous();
+    
+    try {
+      const user = await app.logIn(credentials);
+    } catch(err) {
+      console.error("Failed to log in", err);
+    }
+
+  };
+ ``
+
+ # Initializate the variable that will store the array of results obtained from remote mongoDB using useState (remenbering that for standar, declare name and SET with the same name, and default value in useState)
+
+ const [data, setData] = useState([]);
+
+
+Add the Hook that will allow to perform side effects in the components.
+``
+useEffect( () => {
+    getData()
+  }, []);
+``
+ * VSC should import automatically with the following: import { useEffect, useState } from 'react';
+
+
+
+
+
+
